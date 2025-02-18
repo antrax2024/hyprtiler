@@ -20,7 +20,7 @@ pyinstaller --onefile \
     --clean \
     --workpath=build \
     --specpath=build \
-    --log-level INFO \
+    --log-level FATAL \
     $EXECUTABLE.py
 
 echo "============================================="
