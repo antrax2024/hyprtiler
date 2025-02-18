@@ -53,7 +53,7 @@ echo "Extract the upload URL from the response"
 upload_url=$(echo $response | jq -r .upload_url | sed -e "s/{?name,label}//")
 
 echo "Uploading $BINARY_PATH to $upload_url"
-curl -s -X POST "$upload_url?name=$(basename $BINARY)" \
+curl -s -X POST "$upload_url?name=$(basename $EXECUTABLE)" \
     -H "Authorization: token $GITHUB_TOKEN" \
     -H "Content-Type: application/octet-stream" \
     --data-binary "@$BINARY_PATH"
