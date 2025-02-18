@@ -8,7 +8,7 @@ echo "Committing and pushing changes"
 git commit -a
 git push
 
-# Create a new release on GitHub
+echo "Creating a new release on GitHub"
 EXECUTABLE="hyprwindow"
 BINARY_PATH="$(pwd)/dist/$EXECUTABLE"
 REPO="antrax2024/$EXECUTABLE"
@@ -22,12 +22,6 @@ pyinstaller --onefile \
     --specpath=build \
     --log-level FATAL \
     $EXECUTABLE.py
-
-echo "============================================="
-echo "Creating release $RELEASE_NAME for $REPO"
-echo "Tag: $TAG"
-echo "Binary: $BINARY_PATH"
-echo "============================================="
 
 echo "Copying $EXECUTABLE to $HOME/dotfiles/bin/"
 cp dist/$EXECUTABLE $HOME/dotfiles/bin/
@@ -48,7 +42,6 @@ response=$(
 EOF
 )
 
-# Extract the upload URL from the response
 echo "Extract the upload URL from the response"
 upload_url=$(echo $response | jq -r .upload_url | sed -e "s/{?name,label}//")
 
