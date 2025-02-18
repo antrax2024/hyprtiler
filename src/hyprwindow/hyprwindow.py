@@ -18,7 +18,7 @@ def printAsciiArt():
     print(ascii_art)
 
 
-def writeConfigFile(rule: str, window_class: str, title: str):
+def writeConfigFile(rule: str, window_class: str):
     homeDir = os.path.expanduser("~")
     configDir = os.path.join(homeDir, ".config", "hypr")
 
@@ -30,13 +30,7 @@ def writeConfigFile(rule: str, window_class: str, title: str):
             configFile.write(
                 f"# datetime: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
             )
-            configFile.write(f"windowrulev2 = {rule}")
-            if window_class:
-                configFile.write(f",class: {window_class}")
-            if title:
-                configFile.write(f",title: {title}")
-
-            configFile.write("\n")
+            configFile.write(f"windowrulev2 = {rule},class:{window_class}\n")
 
         print(f"Config file written successfully at {configFilePath}")
     except Exception as e:
@@ -47,7 +41,7 @@ def writeConfigFile(rule: str, window_class: str, title: str):
 def main():
     # Configuração do parser
     parser = argparse.ArgumentParser(
-        description="An application to automatically configure windows on Hyprland",
+        description="Utility to write windows of windows on Hyprland.",
         epilog="example: hyprwindow -r float -c 'alacritty'",
     )
 
@@ -55,7 +49,7 @@ def main():
     parser.add_argument(
         "-r",
         "--rule",
-        choices=["float", "tile", "fullscreen"],
+        type=str,
         default="float",
         help="rule that will be applied to the window. Default is float.",
     )
@@ -64,13 +58,8 @@ def main():
         "-c",
         "--window-class",
         type=str,
+        required=True,
         help="Regular expression of the window class.",
-    )
-
-    parser.add_argument(
-        "-t",
-        "--title",
-        help="Regular expression of the window title.",
     )
 
     # Processamento dos argumentos
@@ -81,7 +70,7 @@ def main():
         parser.print_help()
         sys.exit(0)
 
-    writeConfigFile(args.rule, args.window_class, args.title)
+    writeConfigFile(args.rule, args.window_class)
 
 
 if __name__ == "__main__":
