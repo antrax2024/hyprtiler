@@ -1,8 +1,5 @@
 # hyprwindow
 
-[![PyPI - Version](https://img.shields.io/pypi/v/hyprwindow.svg)](https://pypi.org/project/hyprwindow)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hyprwindow.svg)](https://pypi.org/project/hyprwindow)
-
 -----
 
 **Table of Contents**

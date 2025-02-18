@@ -5,7 +5,7 @@ import sys
 import os
 from datetime import datetime
 
-VERSION = "0.1.8"
+VERSION = "0.1.12"
 
 
 def printAsciiArt():
