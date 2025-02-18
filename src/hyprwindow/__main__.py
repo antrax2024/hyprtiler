@@ -62,14 +62,14 @@ def main():
         help="Regular expression of the window class.",
     )
 
-    # Processamento dos argumentos
-    args = parser.parse_args()
-    # Lógica do script usando os argumentos
-
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(0)
 
+    # Processamento dos argumentos
+    args = parser.parse_args()
+
+    # Lógica do script usando os argumentos
     writeConfigFile(args.rule, args.window_class)
 
 
