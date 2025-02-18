@@ -2,10 +2,16 @@
 rm -rf build/*
 rm -rf dist/*
 
+# commit and push changes
 git commit -a
 git push
 
+# Create a new release on GitHub
 EXECUTABLE="hyprwindow"
+BINARY_PATH="$(pwd)/dist/$EXECUTABLE"
+REPO="antrax2024/$EXECUTABLE"
+TAG="v$(python3 -c "import hyprwindow; print(hyprwindow.VERSION)")"
+RELEASE_NAME="$TAG"
 
 pyinstaller --onefile \
     --clean \
@@ -13,13 +19,8 @@ pyinstaller --onefile \
     --specpath=build \
     $EXECUTABLE.py
 
+# copy the executable to the dotfiles bin directory
 cp dist/$EXECUTABLE $HOME/dotfiles/bin/
-# Create a new release on GitHub
-REPO="antrax2024/$EXECUTABLE"
-TAG="v$(python3 -c "import hyprwindow; print(hyprwindow.VERSION)")"
-RELEASE_NAME="Release $TAG"
-GITHUB_TOKEN=$GITHUB_TOKEN
-BINARY="$(pwd)/dist/$EXECUTABLE"
 
 # Create a new release
 response=$(
@@ -44,4 +45,4 @@ upload_url=$(echo $response | jq -r .upload_url | sed -e "s/{?name,label}//")
 curl -s -X POST "$upload_url?name=$(basename $BINARY)" \
     -H "Authorization: token $GITHUB_TOKEN" \
     -H "Content-Type: application/octet-stream" \
-    --data-binary "@$BINARY"
+    --data-binary "@$BINARY_PATH"
