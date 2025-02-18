@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+
+echo "Cleaning up"
 rm -rf build/*
 rm -rf dist/*
 
-# commit and push changes
+echo "Committing and pushing changes"
 git commit -a
 git push
 
@@ -13,16 +15,24 @@ REPO="antrax2024/$EXECUTABLE"
 TAG="v$(python3 -c "import hyprwindow; print(hyprwindow.VERSION)")"
 RELEASE_NAME="$TAG"
 
+echo "Building $EXECUTABLE..."
 pyinstaller --onefile \
     --clean \
     --workpath=build \
     --specpath=build \
+    --log-level INFO \
     $EXECUTABLE.py
 
-# copy the executable to the dotfiles bin directory
+echo "============================================="
+echo "Creating release $RELEASE_NAME for $REPO"
+echo "Tag: $TAG"
+echo "Binary: $BINARY_PATH"
+echo "============================================="
+
+echo "Copying $EXECUTABLE to $HOME/dotfiles/bin/"
 cp dist/$EXECUTABLE $HOME/dotfiles/bin/
 
-# Create a new release
+echo "Creating release $RELEASE_NAME for $REPO"
 response=$(
     curl -s -X POST https://api.github.com/repos/$REPO/releases \
         -H "Authorization: token $GITHUB_TOKEN" \
@@ -39,9 +49,10 @@ EOF
 )
 
 # Extract the upload URL from the response
+echo "Extract the upload URL from the response"
 upload_url=$(echo $response | jq -r .upload_url | sed -e "s/{?name,label}//")
 
-# Upload the executable to the release
+echo "Uploading $BINARY_PATH to $upload_url"
 curl -s -X POST "$upload_url?name=$(basename $BINARY)" \
     -H "Authorization: token $GITHUB_TOKEN" \
     -H "Content-Type: application/octet-stream" \
