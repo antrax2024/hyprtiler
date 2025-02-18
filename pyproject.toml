@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hyprwindow"
+dynamic = ["version"]
+description = 'An application to automatically configure windows on Hyprland.'
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [{ name = "Antrax", email = "fredcox@gmail.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["cowsay"]
+
+[project.urls]
+Documentation = "https://github.com/antrax2024/hyprwindow#readme"
+Issues = "https://github.com/antrax2024/hyprwindow/issues"
+Source = "https://github.com/antrax2024/hyprwindow"
+
+[tool.hatch.version]
+path = "src/hyprwindow/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = ["coverage[toml]>=6.5", "pytest"]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = ["- coverage combine", "coverage report"]
+cov = ["test-cov", "cov-report"]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.10", "3.11", "3.12", "3.13"]
+
+[tool.hatch.envs.types]
+dependencies = ["mypy>=1.0.0"]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/hyprwindow tests}"
+
+[tool.coverage.run]
+source_pkgs = ["hyprwindow", "tests"]
+branch = true
+parallel = true
+omit = ["src/hyprwindow/__about__.py"]
+
+[tool.coverage.paths]
+hyprwindow = ["src/hyprwindow", "*/hyprwindow/src/hyprwindow"]
+tests = ["tests", "*/hyprwindow/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
