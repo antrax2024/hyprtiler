@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import argparse
 import sys
+import os
+from datetime import datetime
 
 
 def printAsciiArt():
@@ -14,6 +16,32 @@ def printAsciiArt():
            |___/|_|                                              
     """
     print(ascii_art)
+
+
+def writeConfigFile(rule: str, window_class: str, title: str):
+    homeDir = os.path.expanduser("~")
+    configDir = os.path.join(homeDir, ".config", "hypr")
+
+    configFilePath = os.path.join(configDir, "hyprland.conf")
+
+    try:
+        with open(configFilePath, "a") as configFile:
+            configFile.write(f"\n# Rule written by Hyprwindow\n")
+            configFile.write(
+                f"# datetime: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+            )
+            configFile.write(f"windowrulev2 = {rule}")
+            if window_class:
+                configFile.write(f",class: {window_class}")
+            if title:
+                configFile.write(f",title: {title}")
+
+            configFile.write("\n")
+
+        print(f"Config file written successfully at {configFilePath}")
+    except Exception as e:
+        print(f"Failed to write to config file: {e}")
+        sys.exit(1)
 
 
 def main():
@@ -53,11 +81,7 @@ def main():
         parser.print_help()
         sys.exit(0)
 
-    print(f"Rule: {args.rule}")
-    print(f"Window Class: {args.window_class}")
-    print(f"Title: {args.title}")
-
-    # ... seu código aqui ...
+    writeConfigFile(args.rule, args.window_class, args.title)
 
 
 if __name__ == "__main__":
