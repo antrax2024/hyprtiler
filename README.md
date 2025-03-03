@@ -9,7 +9,6 @@
 
 ## Installation
 
-1. setup a github token and create environment var named GITHUB_TOKEN.
 2. Download hyprwindow binary (Latest Release) and put in your PATH. 
 Only
 
