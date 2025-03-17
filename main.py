@@ -5,7 +5,7 @@ import sys
 import os
 from datetime import datetime
 
-VERSION = "0.1.24"
+VERSION = "0.1.26"
 
 
 def printAsciiArt():
@@ -41,6 +41,7 @@ def writeConfigFile(rule: str, window_class: str):
 
 
 def main():
+    printAsciiArt()
     # Configuração do parser
     parser = argparse.ArgumentParser(
         description=f"Application to write windows of windows on Hyprland. Version {VERSION}.",
@@ -76,5 +77,4 @@ def main():
 
 
 if __name__ == "__main__":
-    printAsciiArt()
     main()
