@@ -1,7 +1,15 @@
 [project]
-name = "hyprwindow"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+name            = "hyprwindow"
+version         = "0.1.2"
+description     = "Add your description here"
+readme          = "README.md"
+authors         = [{ name = "Antrax", email = "fredcox@gmail.com" }]
+requires-python = ">=3.13"
+dependencies    = ["confz>=2.1.0", "rich>=14.0.0"]
+
+[project.scripts]
+hyprwindow = "hyprwindow:main"
+
+[build-system]
+requires      = ["hatchling"]
+build-backend = "hatchling.build"
