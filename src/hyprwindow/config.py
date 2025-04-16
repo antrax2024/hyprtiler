@@ -4,7 +4,7 @@ from rich.console import Console
 import sys
 
 # Hyprwindow version
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 # Define the console
 cl = Console()
