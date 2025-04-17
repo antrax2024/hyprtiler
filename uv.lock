@@ -27,8 +27,8 @@ wheels = [
 ]
 
 [[package]]
-name = "hyprwindow"
-version = "0.1.4"
+name = "hyprtiler"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "confz" },

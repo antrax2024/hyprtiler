@@ -3,8 +3,8 @@ from datetime import datetime
 from rich.console import Console
 import sys
 
-# Hyprwindow version
-VERSION = "0.1.4"
+# hyprtiler version
+VERSION = "0.1.2"
 
 # Define the console
 cl = Console()
@@ -12,12 +12,12 @@ cl = Console()
 
 def printAsciiArt() -> None:
     ascii_art = r"""
-     _                               _           _               
-    | |__  _   _ _ __  _ ____      _(_)_ __   __| | _____      __
-    | '_ \| | | | '_ \| '__\ \ /\ / / | '_ \ / _` |/ _ \ \ /\ / /
-    | | | | |_| | |_) | |   \ V  V /| | | | | (_| | (_) \ V  V / 
-    |_| |_|\__, | .__/|_|    \_/\_/ |_|_| |_|\__,_|\___/ \_/\_/  
-           |___/|_|                                              
+ _                      _   _ _           
+| |__  _   _ _ __  _ __| |_(_) | ___ _ __ 
+| '_ \| | | | '_ \| '__| __| | |/ _ \ '__|
+| | | | |_| | |_) | |  | |_| | |  __/ |   
+|_| |_|\__, | .__/|_|   \__|_|_|\___|_|   
+       |___/|_|
     """
     cl.print(ascii_art)
 
@@ -30,7 +30,7 @@ def writeConfigFile(rule: str, window_class: str) -> None:
 
     try:
         with open(configFilePath, "a") as configFile:
-            configFile.write(f"\n# Rule written by Hyprwindow\n")
+            configFile.write(f"\n# Rule written by hyprtiler\n")
             configFile.write(
                 f"# datetime: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
             )

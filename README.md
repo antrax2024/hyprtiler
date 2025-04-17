@@ -1,5 +1,5 @@
-# hyprwindow
-hyprwindow is a Python application designed to manage and automatize experience with windows in [Hyprland](https://hyprland.org/) Wayland Compositor. It provides advanced tiling, floating, and automation features to streamline your workflow with [Hyprland](https://hyprland.org/) writing rules directly in **hyprland.conf** file.
+# hyprtiler
+hyprtiler is a Python application designed to manage and automatize experience with windows in [Hyprland](https://hyprland.org/) Wayland Compositor. It provides advanced tiling, floating, and automation features to streamline your workflow with [Hyprland](https://hyprland.org/) writing rules directly in **hyprland.conf** file.
 
 ## Features
 - Window rules for hyprland automation
@@ -22,18 +22,18 @@ hyprwindow is a Python application designed to manage and automatize experience 
 
 2. Install application:
    ```bash
-   pip install hyprwindow
+   pip install hyprtiler
    ```
 
 ## Usage
 Run the application with:
 ```bash
-hyprwindow
+hyprtiler
 ```
 
 ## Command-line Arguments
 
-The `hyprwindow` application provides the following command-line arguments:
+The `hyprtiler` application provides the following command-line arguments:
 
 - `-h`, `--help` (optional):
   - Type: string
@@ -53,7 +53,7 @@ The `hyprwindow` application provides the following command-line arguments:
 ### Example Usage
 
 ```sh
-hyprwindow -r float -c 'alacritty'
+hyprtiler -r float -c 'alacritty'
 ```
 
 This command applies the `float` rule to windows matching the class `alacritty`.

@@ -1,6 +1,6 @@
 [project]
-name            = "hyprwindow"
-version         = "0.1.4"
+name            = "hyprtiler"
+version         = "0.1.2"
 description     = "A utility tool for managing windows in the Hyprland compositor environment."
 readme          = "README.md"
 authors         = [{ name = "Antrax", email = "fredcox@gmail.com" }]
@@ -9,11 +9,11 @@ license         = { text = "MIT" }
 dependencies    = ["confz>=2.1.0", "rich>=14.0.0"]
 
 [project.urls]
-homepage   = "https://github.com/antrax2024/hyprwindow"
-Repository = "https://github.com/antrax2024/hyprwindow"
+homepage   = "https://github.com/antrax2024/hyprtiler"
+Repository = "https://github.com/antrax2024/hyprtiler"
 
 [project.scripts]
-hyprwindow = "hyprwindow:main"
+hyprtiler = "hyprtiler:main"
 
 [build-system]
 requires      = ["hatchling"]

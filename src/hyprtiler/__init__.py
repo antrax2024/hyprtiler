@@ -8,7 +8,7 @@ def main() -> None:
     # Configuração do parser
     parser = argparse.ArgumentParser(
         description=f"Application to write windows of windows on Hyprland. Version {VERSION}.",
-        epilog="example: hyprwindow -r float -c 'alacritty'",
+        epilog="example: hyprtiler -r float -c 'alacritty'",
     )
 
     # Argumentos opcionais
