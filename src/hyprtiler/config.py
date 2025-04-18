@@ -4,7 +4,7 @@ from rich.console import Console
 import sys
 
 # hyprtiler version
-VERSION = "0.1.18"
+VERSION = "0.1.19"
 
 # Define the console
 cl = Console()
