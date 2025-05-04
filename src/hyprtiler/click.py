@@ -25,18 +25,23 @@ class CustomHelpCommand(click.Command):
     "--class",
     "window_class",
     type=click.STRING,
-    required=True,
+    # required=True,
     help="Windows Class",
 )
 @click.command(cls=CustomHelpCommand, context_settings=CONTEXT_SETTINGS)
-def cli(rule, window_class) -> None:
+@click.pass_context
+def cli(ctx, rule, window_class) -> None:
     """A utility tool for managing windows in the Hyprland compositor environment."""
     click.echo(message=f"{APP_NAME} v{APP_VERSION}\n")
 
-    if rule:
-        click.echo(f"Rule: {rule} ")
+    if not window_class:
+        click.echo("Error: --class is required.")
 
-    if window_class:
-        click.echo(f"Window Class: {window_class:} ")
+        ctx.exit(1)
+
+    if rule:
+        click.echo(f"Rule: {rule}")
+
+    click.echo(f"Window Class: {window_class}")
 
     writeConfigFile(rule, window_class)
