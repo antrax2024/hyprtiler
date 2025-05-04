@@ -18,14 +18,14 @@ class CustomHelpCommand(click.Command):
     "rule",
     type=click.STRING,
     default="float",
-    help="Specifies the Rule for window. (default: float)",
+    help="specifies the Rule for window. (default: float)",
 )
 @click.option(
     "-c",
     "--class",
     "window_class",
     type=click.STRING,
-    help="Windows Class",
+    help="windows class atribute to match.",
 )
 @click.command(cls=CustomHelpCommand, context_settings=CONTEXT_SETTINGS)
 @click.pass_context
