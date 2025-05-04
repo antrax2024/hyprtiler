@@ -1,16 +1,12 @@
 [project]
 name            = "hyprtiler"
-version         = "0.1.19"
+version         = "0.1.20"
 description     = "A utility tool for managing windows in the Hyprland compositor environment."
 readme          = "README.md"
 authors         = [{ name = "Antrax", email = "fredcox@gmail.com" }]
 requires-python = ">=3.13"
 license         = { text = "MIT" }
-dependencies    = [
-    "click>=8.1.8",
-    "confz>=2.1.0",
- "rich>=14.0.0",
-]
+dependencies    = ["click>=8.1.8", "rich>=14.0.0"]
 
 [project.urls]
 homepage   = "https://github.com/antrax2024/hyprtiler"
