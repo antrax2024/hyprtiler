@@ -25,7 +25,7 @@ class CustomHelpCommand(click.Command):
     "--class",
     "window_class",
     type=click.STRING,
-    help="windows class atribute to match.",
+    help="window class atribute to match.",
 )
 @click.command(cls=CustomHelpCommand, context_settings=CONTEXT_SETTINGS)
 @click.pass_context
