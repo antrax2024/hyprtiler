@@ -1,3 +1,4 @@
+import sys
 from .constants import APP_NAME, APP_VERSION
 from hyprtiler.config import writeConfigFile
 import click
