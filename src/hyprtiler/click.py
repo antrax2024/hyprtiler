@@ -1,4 +1,3 @@
-import sys
 from .constants import APP_NAME, APP_VERSION
 from hyprtiler.config import writeConfigFile
 import click
@@ -35,7 +34,7 @@ def cli(ctx, rule, window_class) -> None:
     if not window_class:
         ctx.obj = {}  # Ensure ctx.obj exists
         click.echo(ctx.get_help())
-        ctx.exit(1)
+        ctx.exit(0)
 
     click.echo(message=f"{APP_NAME} v{APP_VERSION}\n")
 
