@@ -1,6 +1,6 @@
 [project]
 name = "hyprtiler"
-version = "0.1.26"
+version = "0.1.28"
 description = "A utility tool for managing windows in the Hyprland compositor environment."
 readme = "README.md"
 authors = [{ name = "Antrax", email = "fredcox@gmail.com" }]

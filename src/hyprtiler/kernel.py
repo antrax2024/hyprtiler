@@ -17,6 +17,7 @@ def printClients() -> None:
     table = Table(
         title="Clients Running",
         box=box.ROUNDED,  # Outras opções: box.SIMPLE, box.MINIMAL, box.DOUBLE, box.HEAVY_EDGE, etc.
+        title_style="bold magenta",
         border_style="bright_yellow",
         header_style="bold green",
         row_styles=["none", "dim"],
