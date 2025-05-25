@@ -51,6 +51,6 @@ def config(ctx, rule, window_class) -> None:
 
 
 @cli.command()
-def gonha() -> None:
+def clients() -> None:
     """Prints clients to the console."""
     printClients()
