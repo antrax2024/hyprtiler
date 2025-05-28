@@ -46,7 +46,7 @@ wheels = [
 
 [[package]]
 name = "hyprtiler"
-version = "0.1.28"
+version = "0.2.2"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
